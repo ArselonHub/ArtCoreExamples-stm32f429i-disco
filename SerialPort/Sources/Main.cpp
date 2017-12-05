@@ -2,7 +2,6 @@
 #include <Art/Pin.h>
 #include <Art/Timer.h>
 #include <Art/Thread.h>
-#include <Art/Shell.h>
 #include <Art/String.h>
 #include <Art/Bsp.h>
 
@@ -13,7 +12,7 @@ Timer timer;
 
 Word count = -20;
 
-void doDataWritten(void*)
+void doDataTransmitted(void*)
 {
 	led()->toggle();
 } 
@@ -30,7 +29,7 @@ int main()
 	led()->configure(PinFunctionOutput0);
 	serialPort.setPort(uart());
 	serialPort.setBaud(Baud115200);
-	serialPort.onDataWritten().connect(doDataWritten);
+	serialPort.onDataTransmitted().connect(doDataTransmitted);
 	serialPort.open();
 	
 	timer.onTimeout().connect(doTimeout);
