@@ -6,7 +6,7 @@
  */
 
 #include <Art/Bsp.h>
-#include <Art/Thread.h>
+#include <Art/Delay.h>
 
 using namespace Art;
 
